@@ -27,7 +27,7 @@ class User extends Authenticatable
     ];
 
     protected $attributes = [
-        'role' => 'student',
+        'role' => 1,
         'degree' => null,
     ];
 
@@ -69,7 +69,17 @@ class User extends Authenticatable
         return $this->belongsToMany(Question::class)->withPivot('choice');
     }
 
+    // Scopes
+    public function scopeStudents($query){
+        return $query->where('role',1);
+    }
+
+    // Functions
+    public function isAdmin(){
+        return $this->role == 'admin';
+    }
+    
     public function getAnswerToQuestion(Question $question){
         return $this->questions()->where('question_id', $question->id)->choice;
-    }
+    } 
 }
