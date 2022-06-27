@@ -59,7 +59,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('student.create') }}">Students</a>
+                                    @if (auth()->user()->isAdmin())
+                                        <a class="dropdown-item" href="{{ route('student.create') }}">Students</a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
