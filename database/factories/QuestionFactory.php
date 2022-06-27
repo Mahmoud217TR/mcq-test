@@ -17,7 +17,7 @@ class QuestionFactory extends Factory
     public function definition()
     {
         return [
-            'content' => $this->faker->sentence(),
+            'content' => $this->faker->paragraph(),
             'degree' => $this->faker->numberBetween(1,4),
             'choice1' => $this->faker->sentence(),
             'choice2' => $this->faker->sentence(),

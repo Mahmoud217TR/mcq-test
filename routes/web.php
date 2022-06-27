@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,10 +29,21 @@ Auth::routes([
 ]);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 Route::get('/dahboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::controller(StudentController::class)->prefix('student')->group(function(){
-    Route::get('index','index')->name('student.index');
+    Route::get('/','index')->name('student.index');
     Route::get('create','create')->name('student.create');
-    Route::post('store','store')->name('student.store');
+    Route::post('/','store')->name('student.store');
+});
+
+Route::controller(QuestionController::class)->prefix('question')->group(function(){
+    Route::get('/','index')->name('question.index');
+});
+
+Route::controller(AnswerController::class)->prefix('answer')->group(function(){
+    Route::get('/','index')->name('answer.index');
+    Route::post('/','store')->name('answer.store');
+
 });

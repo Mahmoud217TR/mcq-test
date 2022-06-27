@@ -80,6 +80,15 @@ class User extends Authenticatable
     }
     
     public function getAnswerToQuestion(Question $question){
-        return $this->questions()->where('question_id', $question->id)->choice;
-    } 
+        return $this->questions()->where('question_id', $question->id)->first()->pivot->choice;
+    }
+
+    public function hasTakenTest(){
+        return $this->degree != null;
+    }
+
+    public function registerAnswer(Question $question, $choice){
+        $this->questions()->detach($question);
+        $this->questions()->attach($question, ['choice'=>$choice]);
+    }
 }
