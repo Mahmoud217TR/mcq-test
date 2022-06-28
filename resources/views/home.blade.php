@@ -68,6 +68,11 @@
                 }
             });
 
+            $('#submit').on('click', function(event){
+                event.preventDefault();
+                submit();
+            });
+
             // Functions
             function fetchQuestions(){
                 $.ajax({
@@ -103,6 +108,17 @@
                     },
                     dataType: "json",
                     success: function (response) {
+                    }
+                });
+            }
+
+            function submit(){
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('test.submit') }}",
+                    dataType: "json",
+                    success: function (response) {
+                        document.location = response.redirect;
                     }
                 });
             }
@@ -157,6 +173,11 @@
                     $('#previous').addClass('disabled');
                 }else{
                     $('#previous').removeClass('disabled');
+                }
+                if(questions.length != answers.length){
+                    $('#submit').addClass('disabled');
+                }else{
+                    $('#submit').removeClass('disabled');
                 }
             }
 

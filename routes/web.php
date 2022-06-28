@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +30,6 @@ Auth::routes([
 ]);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
 Route::get('/dahboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::controller(StudentController::class)->prefix('student')->group(function(){
@@ -45,5 +45,9 @@ Route::controller(QuestionController::class)->prefix('question')->group(function
 Route::controller(AnswerController::class)->prefix('answer')->group(function(){
     Route::get('/','index')->name('answer.index');
     Route::post('/','store')->name('answer.store');
+});
 
+Route::controller(TestController::class)->prefix('test')->group(function(){
+    Route::get('/result','results')->name('test.result');
+    Route::post('/submit','submit')->name('test.submit');
 });
