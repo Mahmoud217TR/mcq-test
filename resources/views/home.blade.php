@@ -174,9 +174,7 @@
                 }else{
                     $('#previous').removeClass('disabled');
                 }
-                if(questions.length != answers.length){
-                    $('#submit').addClass('disabled');
-                }else{
+                if(questions.length == answers.length){
                     $('#submit').removeClass('disabled');
                 }
             }
