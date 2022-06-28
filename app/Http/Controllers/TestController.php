@@ -31,6 +31,10 @@ class TestController extends Controller
         return view('result', compact('final_degree','degree','percentage','result'));
     }
 
+    public function index(){
+        return view('test.index');
+    }
+
     private function calculateDegree(){
         $student_answers = auth()->user()->questions;
         $degree = 0;

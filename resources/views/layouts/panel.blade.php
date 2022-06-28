@@ -26,7 +26,7 @@
                     <a class="nav-link unstyled" href="{{ route('question.create') }}"><i class="bi bi-clipboard2-check me-2"></i>Questions</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link unstyled" href="#"><i class="bi bi-graph-up me-2"></i>Results</a>
+                    <a class="nav-link unstyled" href="{{ route('test.index') }}"><i class="bi bi-graph-up me-2"></i>Results</a>
                 </li>
             </ul>
         </nav>
