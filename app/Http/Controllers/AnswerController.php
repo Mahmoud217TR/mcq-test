@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
 use Illuminate\Http\Request;
 
 class AnswerController extends Controller
@@ -23,8 +24,8 @@ class AnswerController extends Controller
     }
 
     public function store(){
-        return response()->json([
-            'request' => request()->all(),
-        ]);
+        $question_id = request()->question_id;
+        $choice = request()->choice;
+        auth()->user()->registerAnswer($question_id, $choice);
     }
 }

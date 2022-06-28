@@ -87,7 +87,7 @@ class User extends Authenticatable
         return $this->degree != null;
     }
 
-    public function registerAnswer(Question $question, $choice){
+    public function registerAnswer($question, $choice){
         $this->questions()->detach($question);
         $this->questions()->attach($question, ['choice'=>$choice]);
     }

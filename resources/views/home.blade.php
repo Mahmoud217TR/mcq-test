@@ -68,12 +68,6 @@
                 }
             });
 
-            $('.choice-radio').on('click', function(event){
-                console.log('change');
-                storeAnswer();
-                fetchAnswers();
-            });
-
             // Functions
             function fetchQuestions(){
                 $.ajax({
@@ -99,14 +93,16 @@
                 });
             }
 
-            function storeAnswer(){
+            function storeAnswer(choice){
                 $.ajax({
                     type: "POST",
                     url: "{{ route('answer.store') }}",
-                    data: "data",
+                    data: {
+                        question_id: questions[currentQuestion]['id'],
+                        choice: choice,
+                    },
                     dataType: "json",
                     success: function (response) {
-                        console.log(response);
                     }
                 });
             }
@@ -127,12 +123,16 @@
                         $("#choices").append('\
                             <div class="row">\
                                 <div class="col d-flex align-items-center">\
-                                    <input class="me-2 form-check-input choice-radio" type="radio" name="choice" id="' + index + '">\
+                                    <input class="me-2 form-check-input" type="radio" name="choice" id="' + index + '">\
                                     <label class="form-check-label" for="' + index + '">' + choice + '</label>\
                                 </div>\
                             </div>\
                         ');
                      }
+                });
+                $('input[type=radio][name=choice]').on('change',function(){
+                    storeAnswer(this.id);
+                    fetchAnswers();
                 });
             }
 
