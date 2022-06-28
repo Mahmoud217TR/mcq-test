@@ -33,9 +33,12 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/dahboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::controller(StudentController::class)->prefix('student')->group(function(){
-    Route::get('/','index')->name('student.index');
+    Route::get('/all','index')->name('student.index');
+    Route::get('/','show')->name('student.show');
     Route::get('create','create')->name('student.create');
     Route::post('/','store')->name('student.store');
+    Route::patch('/','update')->name('student.update');
+    Route::delete('/','destroy')->name('student.destroy');
 });
 
 Route::controller(QuestionController::class)->prefix('question')->group(function(){
