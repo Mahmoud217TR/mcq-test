@@ -13,7 +13,8 @@ $nav-hieght: 80px;
 
 .board{
     display: flex;
-    overflow-x: auto;
+    height: calc(90vh - $nav-hieght);
+    overflow: auto;
 }
 
 #main-nav{

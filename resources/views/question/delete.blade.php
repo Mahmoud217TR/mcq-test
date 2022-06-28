@@ -7,13 +7,13 @@
         </div>
         <div class="modal-body">
           <p class="text-danger">
-            Are you Sure you want to remove this Student?<br>
+            Are you Sure you want to remove this Question?<br>
             All the data will be lost & this action is not reversable!!
           </p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="delete-modal-close">Close</button>
-          <form action="{{ route('student.destroy') }}" method="POST" id="delete-student-form">
+          <form action="{{ route('question.destroy') }}" method="POST" id="delete-student-form">
             @csrf
             <input id="delete-id" type="text" required hidden>
             <button type="submit" class="btn btn-danger">Delete</button>

@@ -6,7 +6,7 @@
 @include('student.store')
 
 <div class="container-fluid">
-    <div class="row mb-2">
+    <div class="row mb-3">
         <div class="col">
             <h1>Student List</h1>
             <div class="d-flex justify-content-end">

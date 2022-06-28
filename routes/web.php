@@ -43,6 +43,9 @@ Route::controller(StudentController::class)->prefix('student')->group(function()
 
 Route::controller(QuestionController::class)->prefix('question')->group(function(){
     Route::get('/','index')->name('question.index');
+    Route::get('/create','create')->name('question.create');
+    Route::post('/','store')->name('question.store');
+    Route::delete('/','destroy')->name('question.destroy');
 });
 
 Route::controller(AnswerController::class)->prefix('answer')->group(function(){
