@@ -59,4 +59,5 @@ Route::controller(TestController::class)->prefix('test')->group(function(){
     Route::get('/','index')->name('test.index');
     Route::get('/result','show')->name('test.result');
     Route::post('/submit','submit')->name('test.submit');
+    Route::get('/excel', 'export')->name('result.export');
 });

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UsersExport;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TestController extends Controller
 {
@@ -33,6 +35,11 @@ class TestController extends Controller
 
     public function index(){
         return view('test.index');
+    }
+
+    public function export() 
+    {
+        return Excel::download(new UsersExport, 'results.xlsx');
     }
 
     private function calculateDegree(){
