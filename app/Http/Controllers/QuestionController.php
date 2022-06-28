@@ -37,12 +37,30 @@ class QuestionController extends Controller
         });
     }
 
+    public function show(){
+        $question = Question::findOr(request()->id,function(){
+            return response()->json([
+                'code' => '404',
+                'message' => 'Question Not Found!!',
+            ]);
+        });
+        return response()->json([
+            'content' => $question->content,
+            'degree' => $question->degree,
+            'answer' => $question->answer,
+            'choice1' => $question->choice1,
+            'choice2' => $question->choice2,
+            'choice3' => $question->choice3,
+            'choice4' => $question->choice4,
+        ]);
+    }
+
     public function create(){
         return view('question.create');
     }
 
     public function store(){
-        $validator = $this->getCreateValidator();
+        $validator = $this->getValidator();
         if ($validator->passes()){
             Question::create($validator->validated());
             return response()->json([
@@ -55,9 +73,25 @@ class QuestionController extends Controller
         ]);
         
     }
+    public function update(){
+        $validator = $this->getValidator();
 
-    private function getCreateValidator(){
+        if($validator->passes()){
+            $this->updatQuestion($validator->validated());
+            return response()->json([
+                'code' => 200,
+            ]);
+        }else{
+            return response()->json([
+                'code' => 422,
+                'errors' => $validator->errors()->toArray(),
+            ]);
+        }
+    }
+
+    private function getValidator(){
         return Validator::make(request()->all(),[
+            'id' => 'exists:questions,id',
             'content' => 'required|string',
             'degree' => 'required|numeric|min:1',
             'answer' => 'required|numeric|min:1|max:3',
@@ -65,6 +99,18 @@ class QuestionController extends Controller
             'choice2'=> 'nullable|string|required_without_all:choice1,choice3,choice4',
             'choice3'=> 'nullable|string|required_without_all:choice1,choice2,choice4',
             'choice4'=> 'nullable|string|required_without_all:choice1,choice2,choice3',
+        ]);
+    }
+
+    private function updatQuestion($data){
+        Question::find($data['id'])->update([
+            'content' => $data['content'],
+            'degree' => $data['degree'],
+            'answer' => $data['answer'],
+            'choice1' => $data['choice1'],
+            'choice2' => $data['choice2'],
+            'choice3' => $data['choice3'],
+            'choice4' => $data['choice4'],
         ]);
     }
 

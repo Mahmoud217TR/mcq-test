@@ -7,7 +7,7 @@
         </div>
         <form method="POST" action="{{ route('question.store') }}" id='register-question-form'>
             @csrf
-
+            
             <div class="modal-body">
                 <div class="row">
                     <label for="question" class="col col-form-label">Question</label>
@@ -23,7 +23,7 @@
                 </div>
     
                 <div class="row">
-                    <label for="question" class="col col-form-label">Degree</label>
+                    <label for="degree" class="col col-form-label">Degree</label>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-5">
@@ -108,17 +108,3 @@
       </div>
     </div>
 </div>
-
-@push('scripts')
-    <script>
-        $(function(){
-            $('.choice').on('change', function(){
-                if(this.value == ''){
-                    $('#answer'+this.name).prop('disabled',true);
-                }else{
-                    $('#answer'+this.name).prop('disabled',false);
-                }
-            });
-        });
-    </script>
-@endpush

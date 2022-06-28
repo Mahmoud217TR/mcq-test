@@ -42,9 +42,11 @@ Route::controller(StudentController::class)->prefix('student')->group(function()
 });
 
 Route::controller(QuestionController::class)->prefix('question')->group(function(){
-    Route::get('/','index')->name('question.index');
+    Route::get('/all','index')->name('question.index');
+    Route::get('/','show')->name('question.show');
     Route::get('/create','create')->name('question.create');
     Route::post('/','store')->name('question.store');
+    Route::patch('/','update')->name('question.update');
     Route::delete('/','destroy')->name('question.destroy');
 });
 
