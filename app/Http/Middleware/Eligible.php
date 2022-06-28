@@ -16,6 +16,12 @@ class Eligible
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if(auth()->user()->isAdmin()){
+            return redirect()->route('dashboard');
+        }
+        if(auth()->user()->isEligible()){
+            return $next($request);
+        }
+        return redirect()->route('test.result');
     }
 }

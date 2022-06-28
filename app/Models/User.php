@@ -78,13 +78,13 @@ class User extends Authenticatable
     public function isAdmin(){
         return $this->role == 'admin';
     }
+
+    public function isEligible(){
+        return $this->degree == null;
+    }
     
     public function getAnswerToQuestion(Question $question){
         return $this->questions()->where('question_id', $question->id)->first()->pivot->choice;
-    }
-
-    public function hasTakenTest(){
-        return $this->degree != null;
     }
 
     public function registerAnswer($question, $choice){
