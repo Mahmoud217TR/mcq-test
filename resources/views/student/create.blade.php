@@ -10,7 +10,7 @@
         <div class="col">
             <h1>Student List</h1>
             <div class="d-flex justify-content-end">
-                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal">Add New Student</button>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal"><i class="bi bi-person-plus-fill me-2"></i>Add Student</button>
             </div>
         </div>
     </div>
@@ -155,8 +155,8 @@
                     <th scope="row">' + $id + '</th>\
                     <td>' + $name + '</td>\
                     <td>' + $email + '</td>\
-                    <td><button class="btn btn-success btn-sm edit-button" data-bs-toggle="modal" data-bs-target="#updateModal" value="' + $id + '">Edit</button></td>\
-                    <td><button class="btn btn-danger btn-sm delete-button" data-bs-toggle="modal" data-bs-target="#removeModal" value="' + $id + '">Delete</button></td>\
+                    <td><button class="btn btn-success btn-sm edit-button" data-bs-toggle="modal" data-bs-target="#updateModal" value="' + $id + '"><i class="bi bi-pencil-fill"></i></button></td>\
+                    <td><button class="btn btn-danger btn-sm delete-button" data-bs-toggle="modal" data-bs-target="#removeModal" value="' + $id + '"><i class="bi bi-trash3-fill"></i></button></td>\
                 </tr>');
             }
 
