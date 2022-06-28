@@ -1,17 +1,21 @@
-@extends('layouts.app')
+@extends('layouts.panel')
 
-@section('content')
+@section('board')
 @include('student.edit')
 @include('student.delete')
+@include('student.store')
 
-<div class="container">
-    <div class="row">
+<div class="container-fluid">
+    <div class="row mb-2">
         <div class="col">
             <h1>Student List</h1>
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal">Add New Student</button>
+            </div>
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col">
             <table class="table table-striped">
                 <tr>
                     <th scope="col">#</th>
@@ -21,58 +25,6 @@
                     <th scope="col">Delete</th>
                 </tr>
             </table>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">Register a new Student</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('student.store') }}" id='register-student-form'>
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">Name</label>
-
-                            <div class="col">
-                                <input id="name" type="text" class="form-control" name="name" required autocomplete="name" autofocus>
-
-                                <span class="text-danger error-text fw-bold" id='error-name' role="alert">
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">Email Address</label>
-
-                            <div class="col">
-                                <input id="email" type="email" class="form-control" name="email" required autocomplete="email">
-
-                                <span class="text-danger error-text fw-bold" id='error-email' role="alert">
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">Password</label>
-
-                            <div class="col">
-                                <input id="password" type="password" class="form-control" name="password" required autocomplete="new-password">
-
-                                    <span class="text-danger error-text fw-bold" id='error-password' role="alert">
-                                    </span>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -106,6 +58,7 @@
                         if(response.code == 200){
                             $(form).trigger("reset")
                             fetchStudents();
+                            $("#create-modal-close").click()
                         }else{
                             $.each(response.errors, function(field, message){
                                 $('#error-'+field).text(message);

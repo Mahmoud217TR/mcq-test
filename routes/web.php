@@ -30,7 +30,7 @@ Auth::routes([
 ]);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/dahboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::controller(StudentController::class)->prefix('student')->group(function(){
     Route::get('/all','index')->name('student.index');

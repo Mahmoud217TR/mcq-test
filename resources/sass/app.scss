@@ -6,3 +6,36 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+$dashboar-width: 300px;
+$nav-hieght: 80px;
+
+.board{
+    display: flex;
+    overflow-x: auto;
+}
+
+#main-nav{
+    min-height: $nav-hieght;
+}
+
+#dashboard{
+    width: $dashboar-width;
+}
+
+.unstyled{
+    text-decoration: none;
+    color: inherit!important;
+}
+
+@media screen and (min-width: 768px) {
+    #dashboard{
+        margin-top: $nav-hieght;
+        -webkit-transform: none;
+        transform: none;
+        visibility: visible !important;
+    }
+    .board{
+        margin-left: $dashboar-width;
+    }
+}

@@ -10252,3 +10252,31 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.board {
+  display: flex;
+  overflow-x: auto;
+}
+
+#main-nav {
+  min-height: 80px;
+}
+
+#dashboard {
+  width: 300px;
+}
+
+.unstyled {
+  text-decoration: none;
+  color: inherit !important;
+}
+
+@media screen and (min-width: 768px) {
+  #dashboard {
+    margin-top: 80px;
+    transform: none;
+    visibility: visible !important;
+  }
+  .board {
+    margin-left: 300px;
+  }
+}
