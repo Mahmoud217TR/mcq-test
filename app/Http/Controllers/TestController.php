@@ -22,18 +22,13 @@ class TestController extends Controller
         ]);
     }
 
-    public function results(){
+    public function show(){
         $final_degree = Question::sum('degree');
         $degree = auth()->user()->degree;
         $percentage = $this->calculatePercentage($degree, $final_degree);
-        $result = $percentage>=50?"Passed":"Failure";
+        $result = $percentage>=50?"Passed":"Failed";
 
-        return response()->json([
-            'degree' => $degree,
-            'final' => $final_degree,
-            'percentage' => $percentage,
-            'result' => $result,
-        ]);
+        return view('result', compact('final_degree','degree','percentage','result'));
     }
 
     private function calculateDegree(){

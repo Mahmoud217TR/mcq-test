@@ -48,6 +48,6 @@ Route::controller(AnswerController::class)->prefix('answer')->group(function(){
 });
 
 Route::controller(TestController::class)->prefix('test')->group(function(){
-    Route::get('/result','results')->name('test.result');
+    Route::get('/result','show')->name('test.result');
     Route::post('/submit','submit')->name('test.submit');
 });
