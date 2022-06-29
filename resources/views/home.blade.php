@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container fade-in-right">
     <div class="row justify-content-center mb-4">
         <div class="col">
             <div class="card bg-bg-main test-card text-color-main">
@@ -111,6 +111,7 @@
             }
 
             function storeAnswer(choice){
+                displayLoading();
                 updateProgress();
                 $.ajax({
                     type: "POST",
@@ -120,10 +121,12 @@
                         choice: choice,
                     },
                     dataType: "json",
+                    async: false,
                     success: function (response) {
+                        hideLoading();
+                        checkButtons();
                     }
                 });
-                checkButtons();
             }
 
             function submit(){
@@ -205,6 +208,16 @@
 
             function updateProgress(){
                 $('#progress').css('width',(answers.length/questions.length)*100+'%');
+            }
+
+            function displayLoading(){
+                $("#loading-screen-backdrop").removeClass('d-none');
+                $("#loading-screen").removeClass('d-none');
+            }
+
+            function hideLoading(){
+                $("#loading-screen-backdrop").addClass('d-none');
+                $("#loading-screen").addClass('d-none');
             }
 
         });

@@ -9,19 +9,24 @@
     </div>
     <hr class="hr">
     <div class="row mb-3">
-        <div class="col d-flex justify-content-center my-2">
+        <div class="col d-flex justify-content-end">
+            <a href="{{ route('export') }}" class="btn btn-warning">Export Results as Excel Sheet</a>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col d-flex justify-content-center justify-content-md-end my-2">
             <div class="info-card card-1 taken-card fade-in-right">
                 <h1 class="title">Submited</h1>
                 <div class="number display-1 fw-bold">{{ $numberOfTestedStudent }}</div>
             </div>
         </div>
-        <div class="col d-flex justify-content-center my-2">
+        <div class="col d-flex justify-content-center justify-content-md-end my-2">
             <div class="info-card student-card fade-in-right">
                 <h1 class="title">Students</h1>
                 <div class="number display-1 fw-bold">{{ $numberOfStudent }}</div>
             </div>
         </div>
-        <div class="col d-flex justify-content-center my-2">
+        <div class="col d-flex justify-content-center justify-content-md-end my-2">
             <div class="info-card question-card fade-in-right">
                 <h1 class="title">Questions</h1>
                 <div class="number display-1 fw-bold">{{ $numberOfQuestion }}</div>

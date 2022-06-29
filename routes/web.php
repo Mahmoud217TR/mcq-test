@@ -32,7 +32,7 @@ Auth::routes([
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('/export', [ExportController::class,'export'])->name('result.export');
+Route::get('/export', [ExportController::class,'export'])->name('export');
 
 Route::controller(StudentController::class)->prefix('student')->group(function(){
     Route::get('/all','index')->name('student.index');

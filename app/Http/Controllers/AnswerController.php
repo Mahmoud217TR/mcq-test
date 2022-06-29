@@ -27,5 +27,8 @@ class AnswerController extends Controller
         $question_id = request()->question_id;
         $choice = request()->choice;
         auth()->user()->registerAnswer($question_id, $choice);
+        return response()->json([
+            'code' => 200,
+        ]);
     }
 }
