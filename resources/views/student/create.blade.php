@@ -8,22 +8,22 @@
 <div class="container-fluid">
     <div class="row mb-3">
         <div class="col">
-            <h1>Student List</h1>
+            <h1><i class="bi bi-people-fill me-2"></i>Students List</h1>
+        </div>
+    </div>
+    <hr class="hr">
+    <div class="row mb-3">
+        <div class="col">
             <div class="d-flex justify-content-end">
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal"><i class="bi bi-person-plus-fill me-2"></i>Add Student</button>
+                <button class="btn btn-warning fade-in-right" data-bs-toggle="modal" data-bs-target="#createModal"><i class="bi bi-person-plus-fill me-2"></i>Add Student</button>
             </div>
         </div>
     </div>
     <div class="row justify-content-center">
         <div class="col">
-            <table class="table table-striped">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
-                </tr>
+            <table class="table bg-light table-striped fade-in-down">
+                <tbody>
+                </tbody>
             </table>
         </div>
     </div>

@@ -7,6 +7,7 @@ use App\Models\User;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
+
 class UsersExport implements FromCollection, WithHeadings
 {
     /**
@@ -14,16 +15,24 @@ class UsersExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
-        $final_degree = Question::sum('degree');
-        return User::students()->get()->map(function($user) use ($final_degree){
+        $final_degree = Question::getFinalDegree();
+        $passing_degree = Question::getPassingDegree();
+
+        return User::students()->get()->map(function($user) use ($final_degree, $passing_degree){
             return [
                 'id' => $user->id,
                 'name' => $user->name,
                 'degree' => $user->degree,
-                'final' => $final_degree,
+                'result' => $user->degree >= $passing_degree?'Passed':'Failed',
                 'percentage' => "%".$this->calculatePercentage($user->degree, $final_degree),
+                'final' => $final_degree,
             ];
         });
+    }
+
+    
+    private function calculatePercentage($degree, $final_degree){
+        return ceil(($degree/$final_degree)*100);
     }
 
     public function headings(): array
@@ -32,12 +41,10 @@ class UsersExport implements FromCollection, WithHeadings
             'ID',
             'Name',
             'Degree',
-            'Final',
+            'Result',
             'Percentage',
+            'Test Full Degree',
         ];
     }
 
-    private function calculatePercentage($degree, $final_degree){
-        return ceil(($degree/$final_degree)*100);
-    }
 }

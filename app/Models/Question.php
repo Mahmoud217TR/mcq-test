@@ -24,4 +24,12 @@ class Question extends Model
     public function users(){
         return $this->belongsToMany(User::class)->withPivot('choice');
     }
+
+    public static function getFinalDegree(){
+        return Question::sum('degree');
+    }
+
+    public static function getPassingDegree(){
+        return (int) floor(Question::getFinalDegree()/2);
+    }
 }

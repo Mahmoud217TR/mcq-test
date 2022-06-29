@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\StudentController;
@@ -31,6 +32,7 @@ Auth::routes([
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/export', [ExportController::class,'export'])->name('result.export');
 
 Route::controller(StudentController::class)->prefix('student')->group(function(){
     Route::get('/all','index')->name('student.index');
@@ -59,5 +61,4 @@ Route::controller(TestController::class)->prefix('test')->group(function(){
     Route::get('/','index')->name('test.index');
     Route::get('/result','show')->name('test.result');
     Route::post('/submit','submit')->name('test.submit');
-    Route::get('/excel', 'export')->name('result.export');
 });

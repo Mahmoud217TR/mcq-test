@@ -8,8 +8,17 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-icons/font/bootstrap-icons';
 
+// 
+@import 'card.scss';
+@import 'animations.scss';
+
 $dashboar-width: 300px;
 $nav-hieght: 80px;
+
+body{
+    background: linear-gradient(284.94deg, #6D676E 0%, #FBFFFE 97.19%);
+    background-attachment: fixed;
+}
 
 .board{
     display: flex;
@@ -39,5 +48,16 @@ $nav-hieght: 80px;
     }
     .board{
         margin-left: $dashboar-width;
+    }
+}
+
+.side-nav{
+    margin-right: -1rem;
+
+    .active-item{
+        background-color: $main-color;
+        color: $bg-main-color;
+        border-radius: 50px 0px 0px 50px;
+        font-weight: bold;
     }
 }

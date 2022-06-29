@@ -1,0 +1,43 @@
+.info-card{
+    background-color: #FFF;
+    width:300px;
+    min-width: 300px;
+    height: 175px;
+    min-height: 175px;
+    border-radius: 5px;
+    border-left: solid 10px;
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+    background-position: 180px 65px;
+    position: relative;
+
+    .title{
+        position: absolute;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+
+    .number{
+        position: absolute;
+        bottom: 0;
+        right: 120px;
+    }
+}
+
+.student-card{
+    background-image: url('../../public/images/student.svg');
+    border-left-color: #FAA916;
+    color: #FAA916;
+}
+
+.question-card{
+    background-image: url('../../public/images/question.svg');
+    border-left-color: #1A9603;
+    color: #1A9603;
+}
+
+.taken-card{
+    background-image: url('../../public/images/taken.svg');
+    border-left-color: #6D676E;
+    color: #6D676E; 
+}

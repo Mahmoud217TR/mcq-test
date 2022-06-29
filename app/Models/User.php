@@ -74,6 +74,19 @@ class User extends Authenticatable
         return $query->where('role',1);
     }
 
+    public function scopeTested($query){
+        return $query->students()->whereNotNull('degree');
+    }
+
+    public function scopePassed($query){
+        return $query->tested()->where('degree','>=',Question::getPassingDegree());
+    
+    }
+
+    public function scopeFailed($query){
+        return $query->tested()->where('degree','<',Question::getPassingDegree());
+    }
+
     // Functions
     public function isAdmin(){
         return $this->role == 'admin';
@@ -81,6 +94,10 @@ class User extends Authenticatable
 
     public function isEligible(){
         return $this->degree == null;
+    }
+
+    public function hasPassed(){
+        return $this->degree > Question::getPassingDegree();
     }
     
     public function getAnswerToQuestion(Question $question){

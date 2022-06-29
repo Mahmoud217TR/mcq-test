@@ -1,0 +1,9 @@
+@mixin generateColor($name, $color) {
+    .text-color-#{$name}{
+        color: $color!important;
+    }
+
+    .bg-#{$name}{
+        background-color: $color!important;
+    }
+}

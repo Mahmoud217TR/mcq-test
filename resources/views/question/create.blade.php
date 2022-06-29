@@ -7,21 +7,22 @@
     <div class="container">
         <div class="row mb-3">
             <div class="col">
-                <h1>Questions</h1>
+                <h1><i class="bi bi-clipboard2-check me-2"></i>Questions List</h1>
+            </div>
+        </div>
+        <hr class="hr">
+        <div class="row mb-3">
+            <div class="col">
                 <div class="d-flex justify-content-end">
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">Add Question</button>
+                    <button class="btn btn-warning fade-in-right" data-bs-toggle="modal" data-bs-target="#createModal"><i class="bi bi-file-earmark-plus-fill me-2"></i>Add Question</button>
                 </div>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col">
-                <table class="table table-striped">
-                    <tr>
-                        <th scope="col">Question</th>
-                        <th scope="col">Degree</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
-                    </tr>
+                <table class="table bg-light table-striped fade-in-down">
+                    <tbody>
+                    </tbody>
                 </table>
             </div>
         </div>

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\UsersExport;
 use App\Models\Question;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 
 class TestController extends Controller
 {
@@ -34,12 +33,29 @@ class TestController extends Controller
     }
 
     public function index(){
-        return view('test.index');
-    }
 
-    public function export() 
-    {
-        return Excel::download(new UsersExport, 'results.xlsx');
+        $numberOfStudent = User::students()->count();
+        $numberOfTestedStudent = User::tested()->count();
+        $numberOfUntestedStudent = $numberOfStudent - $numberOfTestedStudent;
+        $numberOfQuestion = Question::count();
+        $finalDegree = Question::getFinalDegree();
+        $passed = User::passed()->count();
+        $failed = User::failed()->count();
+        $top10 = User::passed()->orderBy('degree',"DESC")->limit(10)->get()->map(function($user){
+            return  [
+                'name' => $user->name,
+                'degree' => $user->degree,
+            ];
+        });
+        return view('test.index', compact('numberOfStudent',
+                                          'numberOfTestedStudent',
+                                          'numberOfUntestedStudent',
+                                          'numberOfQuestion',
+                                          'passed',
+                                          'failed',
+                                          'top10',
+                                          'finalDegree'
+                                        ));
     }
 
     private function calculateDegree(){
