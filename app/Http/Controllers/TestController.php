@@ -37,8 +37,6 @@ class TestController extends Controller
         $numberOfStudent = User::students()->count();
         $numberOfTestedStudent = User::tested()->count();
         $numberOfUntestedStudent = $numberOfStudent - $numberOfTestedStudent;
-        $numberOfQuestion = Question::count();
-        $finalDegree = Question::getFinalDegree();
         $passed = User::passed()->count();
         $failed = User::failed()->count();
         $top10 = User::passed()->orderBy('degree',"DESC")->limit(10)->get()->map(function($user){
@@ -47,6 +45,10 @@ class TestController extends Controller
                 'degree' => $user->degree,
             ];
         });
+
+        $numberOfQuestion = Question::count();
+        $finalDegree = Question::getFinalDegree();
+        
         return view('test.index', compact('numberOfStudent',
                                           'numberOfTestedStudent',
                                           'numberOfUntestedStudent',

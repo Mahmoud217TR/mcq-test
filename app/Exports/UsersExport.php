@@ -5,10 +5,12 @@ namespace App\Exports;
 use App\Models\Question;
 use App\Models\User;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithStyles;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-
-class UsersExport implements FromCollection, WithHeadings
+class UsersExport implements FromCollection, WithHeadings, WithStyles, WithColumnWidths
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -44,6 +46,26 @@ class UsersExport implements FromCollection, WithHeadings
             'Result',
             'Percentage',
             'Test Full Degree',
+        ];
+    }
+
+    public function columnWidths(): array
+    {
+        return [
+            'A' => 10,
+            'B' => 15,            
+            'C' => 15,            
+            'D' => 30,            
+            'E' => 15,            
+            'F' => 15,            
+        ];
+    }
+
+    public function styles(Worksheet $sheet)
+    {
+        return [
+            // Style the first row as bold text.
+            1    => ['font' => ['bold' => true]],
         ];
     }
 
