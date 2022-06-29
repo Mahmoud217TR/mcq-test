@@ -30,6 +30,6 @@ class Question extends Model
     }
 
     public static function getPassingDegree(){
-        return (int) floor(Question::getFinalDegree()/2);
+        return (int) ceil(Question::getFinalDegree()/2);
     }
 }

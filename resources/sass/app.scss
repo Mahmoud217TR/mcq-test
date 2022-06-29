@@ -16,7 +16,7 @@ $dashboar-width: 300px;
 $nav-hieght: 80px;
 
 body{
-    background: linear-gradient(284.94deg, #6D676E 0%, #FBFFFE 97.19%);
+    background-color: #1B1B1E!important;
     background-attachment: fixed;
 }
 
@@ -60,4 +60,39 @@ body{
         border-radius: 50px 0px 0px 50px;
         font-weight: bold;
     }
+}
+
+.test-card{
+    min-height: 60vh;
+}
+
+.test-choice{
+    min-height: 100px;
+    padding: 1rem;
+    .test-container{
+        padding: 1rem;
+        border: #6D676E solid 3px;
+        border-radius: 12px;
+        min-height: inherit;
+    }
+}
+
+.inflate{
+    min-width: inherit;
+    min-height: inherit;
+}
+
+.card{
+    background: rgba( 30, 30, 58, 0.75 )!important;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 )!important;
+    backdrop-filter: blur( 6.5px )!important;
+    -webkit-backdrop-filter: blur( 6.5px )!important;
+    color: #fff;
+}
+
+.page-item, .page-link{
+    background: rgba( 30, 30, 58, 0.75 )!important;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 )!important;
+    backdrop-filter: blur( 6.5px )!important;
+    -webkit-backdrop-filter: blur( 6.5px )!important;
 }

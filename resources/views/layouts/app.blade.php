@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-bg-main shadow-sm" id='main-nav'>
+        <nav class="navbar navbar-expand-md navbar-light bg-main shadow-sm" id='main-nav'>
             <div class="container">
                 <div class="d-md-none">
                     @yield('left-nav')

@@ -8,7 +8,7 @@
 <div class="container-fluid">
     <div class="row mb-3">
         <div class="col">
-            <h1><i class="bi bi-people-fill me-2"></i>Students List</h1>
+            <h1 class="text-white"><i class="bi bi-people-fill me-2"></i>Students List</h1>
         </div>
     </div>
     <hr class="hr">

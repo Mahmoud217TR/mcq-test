@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row mb-3">
             <div class="col">
-                <h1><i class="bi bi-clipboard2-check me-2"></i>Questions List</h1>
+                <h1 class="text-white"><i class="bi bi-clipboard2-check me-2"></i>Questions List</h1>
             </div>
         </div>
         <hr class="hr">

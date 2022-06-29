@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center mb-3">
+    <div class="row justify-content-center mb-4">
         <div class="col">
-            <div class="card">
+            <div class="card bg-bg-main test-card text-color-main">
                 <div class="card-header fw-bold d-flex justify-content-between">
                     <p class="text-start mb-0">Question <span id='number'></span></p>
                     <p class="text-end mb-0 text-success" >Degree: <span id='degree'></span></p>
@@ -13,10 +13,19 @@
                 <div class="card-body">
                     <p id='content' class="card-content">
                     </p>
-                    <div id="choices" class="container">
-                        
+                    <div class="container">
+                        <div id="choices" class="row row-cols-md-2">
+
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4 justify-content-center">
+        <div class="col-md-6">
+            <div class="progress">
+                <div class="progress-bar bg-warning" id="progress" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </div>
     </div>
@@ -27,7 +36,7 @@
                   <li class="page-item disabled" id="previous">
                     <button class="page-link">Previous</button>
                   </li>
-                  <li class="page-item" id="submit">
+                  <li class="page-item disabled" id="submit">
                     <button class="page-link">Submit</button>
                   </li>
                   <li class="page-item" id="next">
@@ -50,6 +59,7 @@
             fetchQuestions();
             fetchAnswers();
             displayCurrentQuestion();
+            updateProgress();
             
             // Events 
             $('#next').on('click',function(event){
@@ -70,7 +80,9 @@
 
             $('#submit').on('click', function(event){
                 event.preventDefault();
-                submit();
+                if(questions.length == answers.length){
+                    submit();
+                }
             });
 
             // Functions
@@ -99,6 +111,7 @@
             }
 
             function storeAnswer(choice){
+                updateProgress();
                 $.ajax({
                     type: "POST",
                     url: "{{ route('answer.store') }}",
@@ -110,6 +123,7 @@
                     success: function (response) {
                     }
                 });
+                checkButtons();
             }
 
             function submit(){
@@ -137,11 +151,19 @@
                 $.each(question['choices'], function (index, choice) { 
                      if(choice != null){
                         $("#choices").append('\
-                            <div class="row">\
-                                <div class="col d-flex align-items-center">\
-                                    <input class="me-2 form-check-input" type="radio" name="choice" id="' + index + '">\
-                                    <label class="form-check-label" for="' + index + '">' + choice + '</label>\
-                                </div>\
+                            <div class="col test-choice">\
+                                <label class="test-container container" for="' + index + '">\
+                                    <div class="row">\
+                                        <div class="col">\
+                                            <div class="form-check">\
+                                                <input class="me-2 form-check-input" type="radio" name="choice" id="' + index + '">\
+                                            </div>\
+                                        </div>\
+                                    </div>\
+                                    <div class="row">\
+                                        <p class="text-center">' + choice + '</p>\
+                                    </div>\
+                                </label>\
                             </div>\
                         ');
                      }
@@ -176,7 +198,13 @@
                 }
                 if(questions.length == answers.length){
                     $('#submit').removeClass('disabled');
+                }else{
+                    $('#submit').addClass('disabled');
                 }
+            }
+
+            function updateProgress(){
+                $('#progress').css('width',(answers.length/questions.length)*100+'%');
             }
 
         });

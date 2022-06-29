@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row mb-3">
         <div class="col">
-            <h1><i class="bi bi-graph-up me-2"></i>Results & Statistics</h1>
+            <h1 class="text-white"><i class="bi bi-graph-up me-2"></i>Results & Statistics</h1>
         </div>
     </div>
     <hr class="hr">
@@ -30,12 +30,12 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-md-6 p-2">
-            <div class="card p-4 fade-in-down">
+            <div class="card p-4 fade-in-down bg-white">
                 <canvas id="pie-canvas" width="200" height="200"> </canvas>
             </div>
         </div>
         <div class="col-md-6 p-2">
-            <div class="card p-4 fade-in-down">
+            <div class="card p-4 fade-in-down bg-white">
                 <canvas id="bar-canvas" width="200" height="200"> </canvas>
             </div>
         </div>
@@ -78,8 +78,9 @@
         const bardata = {
         labels: barlabels,
         datasets: [{
-            label: 'Top 10 Bar',
+            label: 'Top 10 Passed Students',
             data: {{ $top10->pluck('degree') }},
+            backgroundColor: ['#1A9603'],
             borderWidth: 1
         }]
         };

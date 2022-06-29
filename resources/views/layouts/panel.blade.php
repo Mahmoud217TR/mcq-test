@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <div class="offcanvas offcanvas-start bg-bg-main text-white" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="dashboard" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas offcanvas-start bg-galss text-white" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="dashboard" aria-labelledby="offcanvasScrollingLabel">
         <div class="offcanvas-header">
         <a class="unstyled fade-in-right" href="{{ route('dashboard') }}">
             <h2 class="offcanvas-title" id="offcanvasScrollingLabel"><i class="bi bi-speedometer2 me-2"></i>Dashboard</h2>

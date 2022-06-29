@@ -17,6 +17,7 @@ $main-color: #FAA916;
 $sup-danger-color: #96031A;
 $sup-success-color: #1A9603;
 $sup-primary-color: #031A96;
+$glass-color: #1C1C31;
 
 @include generateColor('bg-main',$bg-main-color);
 @include generateColor('bg-secondary',$bg-secondary-color);
@@ -24,3 +25,5 @@ $sup-primary-color: #031A96;
 @include generateColor('sup-danger',$sup-danger-color);
 @include generateColor('sup-success',$sup-success-color);
 @include generateColor('sup-primary',$sup-primary-color);
+@include generateColor('galss',$glass-color);
+
