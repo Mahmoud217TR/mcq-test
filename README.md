@@ -1,6 +1,6 @@
 # MCQ TEST
 
-# Setup
+## Setup
 
 * First git a clone or download the project.
 * Use `composer install` to install PHP dependencies.
@@ -11,35 +11,34 @@
     username: admin@users.test
     password: password
 
+## Features
+
+* Admin dashboard.
+* Only 1 test.
+* Only Admin can register new Students or new Questions.
+
 
 
 *** 
 ## Gallery
 
 <p align='center'>
-   <img src='gallery/Pic 1.jpg' width='30%'>
-   <img src='gallery/Pic 2.jpg' width='30%'>
-   <img src='gallery/Pic 3.jpg' width='30%'>
+   <img src='gallery/Pic 1.png' width='30%'>
+   <img src='gallery/Pic 2.png' width='30%'>
+   <img src='gallery/Pic 3.png' width='30%'>
 </p>
 
 
 <p align='center'>
-   <img src='gallery/Pic 4.jpg' width='30%'>
-   <img src='gallery/Pic 5.jpg' width='30%'>
-   <img src='gallery/Pic 6.jpg' width='30%'>
+   <img src='gallery/Pic 4.png' width='30%'>
+   <img src='gallery/Pic 5.png' width='30%'>
+   <img src='gallery/Pic 6.png' width='30%'>
 </p>
 
 <p align='center'>
-   <img src='gallery/Pic 7.jpg' width='30%'>
-   <img src='gallery/Pic 8.jpg' width='30%'>
-   <img src='gallery/Pic 9.jpg' width='30%'>
-</p>
-
-
-<p align='center'>
-   <img src='gallery/Pic4.jpg' width='30%'>
-   <img src='gallery/Pic5.jpg' width='30%'>
-   <img src='gallery/Pic6.jpg' width='30%'>
+   <img src='gallery/Pic 7.png' width='30%'>
+   <img src='gallery/Pic 8.png' width='30%'>
+   <img src='gallery/Pic 9.png' width='30%'>
 </p>
 
 ***
