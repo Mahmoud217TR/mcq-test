@@ -5,6 +5,7 @@
 * First git a clone or download the project.
 * Use `composer install` to install PHP dependencies.
 * Use `npm instal && npm run dev` to install JavaScript dependencies.
+* Make `.env` file.
 * Use `php artisan key:generate` to generate app key.
 * Use `php artisan migrate --seed` to migrate & seed the database.
 * You can login as admin using this credentials:
