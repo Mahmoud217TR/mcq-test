@@ -32,13 +32,29 @@ class TestController extends Controller
         return view('result', compact('final_degree','degree','percentage','result'));
     }
 
-    public function index(){
+    private function calculateDegree(){
+        $student_answers = auth()->user()->questions;
+        $degree = 0;
+        foreach($student_answers as $student_answer){
+            if($student_answer->pivot->choice == $student_answer->answer){
+                $degree += $student_answer->degree;
+            }
+        }
+        return $degree;
+    }
 
+    private function calculatePercentage($degree, $final_degree){
+        return ceil(($degree/$final_degree)*100);
+    }
+
+    public function index(){
         $numberOfStudent = User::students()->count();
         $numberOfTestedStudent = User::tested()->count();
         $numberOfUntestedStudent = $numberOfStudent - $numberOfTestedStudent;
+
         $passed = User::passed()->count();
         $failed = User::failed()->count();
+        
         $top10 = User::passed()->orderBy('degree',"DESC")->limit(10)->get()->map(function($user){
             return  [
                 'name' => $user->name,
@@ -58,20 +74,5 @@ class TestController extends Controller
                                           'top10',
                                           'finalDegree'
                                         ));
-    }
-
-    private function calculateDegree(){
-        $student_answers = auth()->user()->questions;
-        $degree = 0;
-        foreach($student_answers as $student_answer){
-            if($student_answer->pivot->choice == $student_answer->answer){
-                $degree += $student_answer->degree;
-            }
-        }
-        return $degree;
-    }
-
-    private function calculatePercentage($degree, $final_degree){
-        return ceil(($degree/$final_degree)*100);
     }
 }

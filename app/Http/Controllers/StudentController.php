@@ -15,6 +15,7 @@ class StudentController extends Controller
 
     public function index(){
         $students = User::Students()->get();
+
         return response()->json([
             'students' => $students,
         ]);
@@ -27,6 +28,7 @@ class StudentController extends Controller
                 'message' => 'User Not Found!!',
             ]);
         });
+
         return response()->json([
             'name' => $user->name,
             'email' => $user->email,
@@ -54,6 +56,7 @@ class StudentController extends Controller
     }
 
     private function getCreateValidator(){
+        
         return Validator::make(request()->all(),[
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],

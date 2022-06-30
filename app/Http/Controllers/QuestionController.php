@@ -61,6 +61,7 @@ class QuestionController extends Controller
 
     public function store(){
         $validator = $this->getValidator();
+        
         if ($validator->passes()){
             Question::create($validator->validated());
             return response()->json([
