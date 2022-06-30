@@ -8,15 +8,21 @@
 * Use `php artisan key:generate` to generate app key.
 * Use `php artisan migrate --seed` to migrate & seed the database.
 * You can login as admin using this credentials:
+
+```
     username: admin@users.test
     password: password
+```
 
 ## Features
 
 * Admin dashboard.
 * Only 1 test.
+* Fully CRUD API for Students & Questions.
 * Only Admin can register new Students or new Questions.
-
+* Student answers will be saved before submission.
+* Student Degrees can be exported to an excel sheet.
+* Progress bar for Students to display there progress.
 
 
 *** 
