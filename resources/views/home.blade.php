@@ -61,7 +61,6 @@
             fetchQuestions();
             fetchAnswers();
             displayCurrentQuestion();
-            updateProgress();
             
             // Events 
             $('#next').on('click',function(event){
@@ -108,13 +107,15 @@
                     async: false,
                     success: function (response) {
                         answers = response.answers;
+                        updateProgress();
+                        checkButtons();
+                        hideLoading();     
                     }
                 });
             }
 
             function storeAnswer(choice){
                 displayLoading();
-                updateProgress();
                 $.ajax({
                     type: "POST",
                     url: "{{ route('answer.store') }}",
@@ -125,8 +126,7 @@
                     dataType: "json",
                     async: false,
                     success: function (response) {
-                        hideLoading();
-                        checkButtons();
+                                           
                     }
                 });
             }
