@@ -1,5 +1,7 @@
 @extends('layouts.panel')
 
+@section('title', 'Students')
+
 @section('board')
 @include('student.edit')
 @include('student.delete')

@@ -1,5 +1,7 @@
 @extends('layouts.panel')
 
+@section('title', 'Results & Statistics')
+
 @section('board')
 <div class="container-fluid">
     <div class="row mb-3">

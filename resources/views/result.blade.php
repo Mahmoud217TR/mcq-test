@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Result')
+
 @section('content')
     <div class="container fade-in-down">
         <div class="row justify-content-center">

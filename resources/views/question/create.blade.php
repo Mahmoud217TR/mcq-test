@@ -1,5 +1,7 @@
 @extends('layouts.panel')
 
+@section('title', 'Questions')
+
 @include('question.store')
 @include('question.edit')
 @include('question.delete')

@@ -1,5 +1,7 @@
 @extends('layouts.panel')
 
+@section('title', 'Dashboard')
+
 @section('board')
 <div class="container">
     <div class="row justify-content-center">
